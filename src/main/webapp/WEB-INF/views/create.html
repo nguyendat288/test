@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <title>Thêm thành phố</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+<body>
+<div class="container">
+    <h2>Create City</h2>
+    <form action="/create" method="post" th:object="${city}" enctype="multipart/form-data">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Area</th>
+                <th>population</th>
+            </tr>
+            <tr>
+                <td><input placeholder="Nhập tên thành phố" th:field="*{name}"></td>
+                <td>
+                    <select th:field="*{country}">
+                        <option th:each="country:${ListCountry}" th:value="${country.id}"
+                                th:text="${country.name}"></option>
+                    </select>
+                </td>
+                <td><input placeholder="Nhập diện tích" th:field="*{dientich}"></td>
+                <td><input placeholder="Nhập dân số" th:field="*{danso}"></td>
+            </tr>
+            <tr>
+                <td style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('dientich')}" th:errors="*{dientich}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('danso')}" th:errors="*{danso}"></td>
+
+            </tr>
+            <tr>
+                <th>GDP</th>
+                <th>mota</th>
+            </tr>
+            <tr>
+                <td><input placeholder="nhập gdp" th:field="*{gdp}"></td>
+                <td><input placeholder="nhập mota" th:field="*{mota}"></td>
+            </tr>
+            <tr>
+                <td style="color: red" th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('mota')}" th:errors="*{mota}"></td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Create</button>
+    </form>
+    <a href="/home" type="submit" class="btn btn-success">Home</a>
+</div>
+</body>
+</html>

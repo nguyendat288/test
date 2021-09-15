@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Product</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>EDIT City</h2>
+    <form method="post" th:object="${city}" enctype="multipart/form-data">
+        <table class="table">
+            <tbody>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Area</th>
+                <th>population</th>
+            </tr>
+            <tr>
+                <td><input placeholder="nhập tên thành phố" th:field="*{name}"></td>
+
+                <td>
+                    <select name="countryid" th:value="*{country.id}">
+                        <option th:each="country:${ListCountry}" th:value="${country.id}"
+                                th:text="${country.name}"></option>
+                    </select>
+                </td>
+                <td><input placeholder="nhập tên diện tích" th:field="*{dientich}"></td>
+                <td><input placeholder="nhập tên dân số" th:field="*{danso}"></td>
+
+            </tr>
+            <tr>
+                <th>GDP</th>
+                <th>mota</th>
+            </tr>
+            <tr>
+                <td><input placeholder="nhập gdp" th:field="*{gdp}"></td>
+                <td><input placeholder="nhập mota" th:field="*{mota}"></td>
+            </tr>
+            </thead>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Edit City</button>
+    </form>
+    <a href="/home" type="submit" class="btn btn-success">Home</a>
+</div>
+</body>
+</html>

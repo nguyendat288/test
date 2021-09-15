@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Danh sách thành phố</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+
+  <h2>Show City</h2>
+  <a href="/create" class="btn btn-success">Create</a>
+  <br>
+  <table class="table" border="2px">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Details</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="city:${ListCity}">
+      <td th:text="${city.name}"></td>
+      <td th:text="${city.country.name}"></td>
+      <td><a th:href="@{/show/{id}(id=${city.id})}" class="btn btn-warning">Details</a></td>
+      <td><a th:href="@{/edit/{id}(id=${city.id})}" class="btn btn-warning">Edit</a></td>
+      <td><a th:href="@{/delete/{id}(id=${city.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn không ?')">Delete</a></td>
+    </tr>
+    </c:forEach>
+    </tbody>
+  </table>
+  <a href="/home" type="submit" class="btn btn-success">home</a>
+</div>
+</body>
+</html>

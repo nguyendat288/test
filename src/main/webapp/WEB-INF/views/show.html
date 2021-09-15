@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title> Account</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container" th:object="${city}">
+
+
+    <h2>Show Account</h2>
+    <br>
+    <br>
+    <div>
+        <p>Name :</p>
+        <p th:text="${city.name}"></p>
+        <br>
+        <p>Coutry : </p>
+        <p th:text="${city.country.name}"></p>
+            <br>
+        <p>Area : </p>
+        <p th:text="${city.dientich}"></p>
+        <br>
+        <p>population : </p>
+        <p th:text="${city.danso}"></p>
+        <br>
+        <p>GDP : </p>
+        <p th:text="${city.gdp}"></p>
+        <br>
+        <p>mota: </p>
+        <br>
+        <p th:text="${city.mota}"></p>
+        <br>
+        <p><a th:href="@{/edit/{id}(id=${city.id})}" class="btn btn-warning">Edit</a></p>
+    </div>
+
+    <!--    <a href="/product?pageNumber-1" type="submit" class="btn btn-success">before</a>-->
+    <!--    <a href="/product?pageNumber" type="submit" class="btn btn-success"></a>-->
+    <!--    <a href="/product?pageNumber+1" type="submit" class="btn btn-success">next</a>-->
+    <a href="/home" type="submit" class="btn btn-success">home</a>
+</div>
+</body>
+</html>
